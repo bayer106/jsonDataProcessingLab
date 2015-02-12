@@ -8,7 +8,8 @@
 - Move the seed.js into your config directory. 
 - Make sure that your .gitignore contains the .idea, /server/config/environment/production.js, etc. Use past .gitignore for reference. 
 - Once you have checked your .gitignore, add your project to the repsoitory and commit. 
-- You will be using your test database (just like we did last time). You will be using a read-only access on a different database for your production code. 
+- You will be using your test database (just like we did last time). You will be using a read-only access on a different database for your production code.
+- Added Change
 
 ## Using the generator to create your project
 We are using yeoman generator: http://yeoman.io/generators/
