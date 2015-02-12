@@ -2,10 +2,24 @@
 
 angular.module('jsonDataProcessingLabApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+    $scope.menu = [
+      {'title': 'Home', 'link': '/'}
+    ];
+    $scope.search = [
+      {'title': 'Course', 'link': '/'},
+      {'title': 'Student Status', 'link': '/'}
+    ];
+    $scope.display = [
+      {'title': 'Detailed Information', 'link': '/'},
+      {'title': 'All Courses', 'link': '/'}
+    ];
+    $scope.list = [
+      {'title': 'Name', 'link': '/'},
+      {'title': 'GPA', 'link': '/'},
+      {'title': 'Major', 'link': '/'},
+      {'title': 'DOB', 'link': '/'},
+      {'title': 'Completed Courses', 'link': '/'}
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
