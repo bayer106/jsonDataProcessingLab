@@ -1,3 +1,11 @@
-/**
- * Created by simon998 on 2/12/15.
- */
+'use strict';
+
+angular.module('jsonDataProcessingLabApp')
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('gpa', {
+        url: '/gpa',
+        templateUrl: 'app/gpa/gpa.html',
+        controller: 'GpaCtrl'
+      });
+  });
