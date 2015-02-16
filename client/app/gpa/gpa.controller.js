@@ -9,3 +9,4 @@ angular.module('jsonDataProcessingLabApp')
       socket.syncUpdates('student', $scope.myStudents);
     });
   });
+

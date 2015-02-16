@@ -15,7 +15,7 @@ angular.module('jsonDataProcessingLabApp')
     ];
     $scope.list = [
       {'title': 'Name', 'link': '/'},
-      {'title': 'GPA', 'link': '/'},
+      {'title': 'GPA', 'link': '/gpa'},//if you change link to html, goes to that page
       {'title': 'Major', 'link': '/'},
       {'title': 'DOB', 'link': '/'},
       {'title': 'Completed Courses', 'link': '/'}
