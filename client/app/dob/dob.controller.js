@@ -11,6 +11,8 @@ angular.module('jsonDataProcessingLabApp')
 
     $scope.returnName = function(){
       return $scope.myStudents[0].firstName;
+
+
     };
   });
 

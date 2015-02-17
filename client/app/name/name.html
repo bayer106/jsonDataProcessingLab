@@ -8,11 +8,10 @@
   <div ng-include="'components/navbar/navbar.html'"></div>
 </div>
 
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="students in myStudents | orderObjectBy:'position'">{{students.firstName}}</li>
-    <!--<li>{{student.firstName}}</li>-->
-    <!--console.log({{myStudents.firstName}});-->
-</ul>
+<!--<ul class="list-group">-->
+  <!--<li class="list-group-item" ng-repeat="students in myStudents | orderObjectBy:'position'">{{students.firstName}}</li>-->
+  <!--<li>{{myStudents.sort(orderBy("-firstName"))}}</li>-->
+<!--</ul>-->
 
 <table border="1">
   <thead>
@@ -24,7 +23,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="pupil in myStudents">
+  <tr ng-repeat="pupil in myStudents.sort(orderBy('firstName'))">
     <td>{{pupil.firstName}}</td>
     <td>{{pupil.lastName}}</td>
     <td>{{pupil.major1}}</td>
