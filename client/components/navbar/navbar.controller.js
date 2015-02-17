@@ -7,18 +7,18 @@ angular.module('jsonDataProcessingLabApp')
     ];
     $scope.search = [
       {'title': 'Course', 'link': '/'},
-      {'title': 'Student Status', 'link': '/'}
+      {'title': 'Student Status', 'link': '/studentstatus'}
     ];
     $scope.display = [
-      {'title': 'Detailed Information', 'link': '/'},
-      {'title': 'All Courses', 'link': '/'}
+      {'title': 'Detailed Information', 'link': '/studentinfo'},
+      {'title': 'All Courses', 'link': '/allcourses'}
     ];
     $scope.list = [
-      {'title': 'Name', 'link': '/'},
+      {'title': 'Name', 'link': '/name'},
       {'title': 'GPA', 'link': '/gpa'},//if you change link to html, goes to that page
-      {'title': 'Major', 'link': '/'},
-      {'title': 'DOB', 'link': '/'},
-      {'title': 'Completed Courses', 'link': '/'}
+      {'title': 'Major', 'link': '/major'},
+      {'title': 'DOB', 'link': '/dob'},
+      {'title': 'Completed Courses', 'link': '/completedcourses'}
     ];
 
     $scope.isCollapsed = true;
