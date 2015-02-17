@@ -1,17 +1,19 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>List of Students by completed course...</h1>
+    <p class="lead">Search student records based on courses that students have taken or will take.</p>
   </div>
 </header>
 
-<p>Hello {{returnName()}}</p>
-  <ul class="list-group">
+<div class="container">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+</div>
+
+<ul class="list-group">
     <li class="list-group-item" ng-repeat="students in myStudents | orderObjectBy:'position'">{{students.firstName}}</li>
     <!--<li>{{student.firstName}}</li>-->
     <!--console.log({{myStudents.firstName}});-->
-  </ul>
+</ul>
 
 <table border="1">
   <thead>

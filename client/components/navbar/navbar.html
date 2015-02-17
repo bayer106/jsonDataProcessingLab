@@ -7,12 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">json-data-processing-lab</a>
     </div>
-    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}">{{item.title}}</a>
+    <div class="dropdown" style="position:absolute;right:5px;">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Search Options
+        <span class="caret"></span>
+        </button>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+            <a role="menuitem" tabindex="-1" ng-href="{{item.link}}">{{item.title}}</a>
         </li>
         <p class="navbar-brand">  Search by...</p>
         <li ng-repeat="item in search" ng-class="{active: isActive(item.link)}">

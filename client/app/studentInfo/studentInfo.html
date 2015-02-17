@@ -1,5 +1,3 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Student Database!</h1>
@@ -7,12 +5,15 @@
   </div>
 </header>
 
-<p>Hello {{returnName()}}</p>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="students in myStudents | orderObjectBy:'position'">{{students.firstName}}</li>
+<div class="container">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="students in myStudents | orderObjectBy:'position'">{{students.firstName}}</li>
     <!--<li>{{student.firstName}}</li>-->
     <!--console.log({{myStudents.firstName}});-->
-  </ul>
+</ul>
 
 <table border="1">
   <thead>
