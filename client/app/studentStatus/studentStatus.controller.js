@@ -5,7 +5,7 @@ angular.module('jsonDataProcessingLabApp')
     $scope.myStudents = [];
     $scope.statusSort = [];
 
-    $scope.classSelected = 2;
+    $scope.classSelected = 0;
 
     $scope.changeClassSelected = function(num){
       $scope.classSelected = num;
@@ -13,7 +13,8 @@ angular.module('jsonDataProcessingLabApp')
 
     $scope.returnStudentStatus = function(){
       $scope.sortByStatus();
-      if($scope.classSelected == 0){
+      console.log($scope.classSelected);
+      if($scope.classSelected == null){
         return "Not Selected";
       }else if ($scope.classSelected == 1){
         return "Freshman";
@@ -38,7 +39,9 @@ angular.module('jsonDataProcessingLabApp')
       for (var i = 0; i < $scope.myStudents.length; i++) {
         var totalCredits = 0;
         for (var j = 0; j < $scope.myStudents[i].courses.length; j++) {
-          totalCredits += $scope.myStudents[i].courses[j].course.credits;
+          if($scope.myStudents[i].courses[j].grade != "F" && $scope.myStudents[i].courses[j].grade != "IP") {
+            totalCredits += $scope.myStudents[i].courses[j].course.credits;
+          }
         }
         totalCredits = parseInt(totalCredits);
         if ($scope.classSelected == 1 && totalCredits < 30) {
@@ -66,9 +69,5 @@ angular.module('jsonDataProcessingLabApp')
         return result * sortOrder;
       }
     };
-
-    $scope.returnFirst = function(){
-      return $scope.statusSort[0];
-    }
   });
 

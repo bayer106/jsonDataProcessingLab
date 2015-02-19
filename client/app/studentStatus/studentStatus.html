@@ -25,14 +25,12 @@
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>DOB</th>
   </tr>
   </thead>
   <tbody>
   <tr ng-repeat="pupil in statusSort.sort(orderBy('lastName'))">
     <td>{{pupil.firstName}}</td>
     <td>{{pupil.lastName}}</td>
-    <td>{{pupil.dateOfBirth}}</td>
   </tr>
   </tbody>
 </table>
