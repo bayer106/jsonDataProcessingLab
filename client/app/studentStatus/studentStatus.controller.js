@@ -5,14 +5,14 @@ angular.module('jsonDataProcessingLabApp')
     $scope.myStudents = [];
     $scope.statusSort = [];
 
-    $scope.classSelected = 0;
+    $scope.classSelected = 2;
+
     $scope.changeClassSelected = function(num){
-      console.log("test");
       $scope.classSelected = num;
-      $scope.sortByStatus();
-      return $scope.classSelected;
     };
+
     $scope.returnStudentStatus = function(){
+      $scope.sortByStatus();
       if($scope.classSelected == 0){
         return "Not Selected";
       }else if ($scope.classSelected == 1){
@@ -34,33 +34,23 @@ angular.module('jsonDataProcessingLabApp')
     });
 
     $scope.sortByStatus = function(){
+      $scope.statusSort = [];
       for (var i = 0; i < $scope.myStudents.length; i++) {
         var totalCredits = 0;
-        for (var j = 0; j < $scope.myStudents.courses.length; j++) {
-          totalCredits += parseInt($scope.myStudents[i].courses[j].credits);
-          console.log("got here");
-          if ($scope.classSelected == 1) {
-            console.log("gothere");
-            if (totalCredits < 30) {
-              $scope.statusSort.push($scope.myStudents[i]);
-            }
-          } else if ($scope.classSelected == 2) {
-            if (totalCredits > 30 && totalCredits < 60) {
-              $scope.statusSort.push($scope.myStudents[i]);
-            }
-          } else if ($scope.classSelected == 3) {
-            if (totalCredits > 60 && totalCredits < 90) {
-              $scope.statusSort.push($scope.myStudents[i]);
-            }
-          } else if ($scope.classSelected == 4) {
-            if (totalCredits > 90 && totalCredits < 120) {
-              $scope.statusSort.push($scope.myStudents[i]);
-            }
-          } else if ($scope.classSelected == 5) {
-            if (totalCredits > 120) {
-              $scope.statusSort.push($scope.myStudents[i]);
-            }
-          }
+        for (var j = 0; j < $scope.myStudents[i].courses.length; j++) {
+          totalCredits += $scope.myStudents[i].courses[j].course.credits;
+        }
+        totalCredits = parseInt(totalCredits);
+        if ($scope.classSelected == 1 && totalCredits < 30) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 2 && totalCredits > 30 && totalCredits < 60) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 3 && totalCredits > 60 && totalCredits < 90) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 4 && totalCredits > 90 && totalCredits < 120) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 5 && totalCredits > 120) {
+          $scope.statusSort.push($scope.myStudents[i]);
         }
       }
     };
@@ -76,5 +66,9 @@ angular.module('jsonDataProcessingLabApp')
         return result * sortOrder;
       }
     };
+
+    $scope.returnFirst = function(){
+      return $scope.statusSort[0];
+    }
   });
 
