@@ -12,5 +12,18 @@ angular.module('jsonDataProcessingLabApp')
     $scope.returnName = function(){
       return $scope.myStudents[0].firstName;
     };
+
+    $scope.isGradeValid = function(grade) {
+      grade = grade.toUpperCase();
+      switch(grade) {
+        case "A":
+        case "B":
+        case "C":
+        case "D":
+           return true;
+        default:
+          return false;
+      }
+    };
   });
 
