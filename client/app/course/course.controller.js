@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jsonDataProcessingLabApp')
-  .controller('SuccessfulCreditsCtrl', function ($scope, $http, socket) {
+  .controller('CourseCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
 
     $http.get('/api/students').success(function(myStudents) {
