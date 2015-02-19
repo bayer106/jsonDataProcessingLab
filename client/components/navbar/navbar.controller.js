@@ -6,7 +6,7 @@ angular.module('jsonDataProcessingLabApp')
       {'title': 'Home', 'link': '/'}
     ];
     $scope.search = [
-      {'title': 'Course', 'link': '/'},
+      {'title': 'Course', 'link': '/course'},
       {'title': 'Student Status', 'link': '/studentstatus'}
     ];
     $scope.display = [
