@@ -25,5 +25,18 @@ angular.module('jsonDataProcessingLabApp')
           return false;
       }
     };
+
+    $scope.totalCreditsForStudent = function (student) {
+      //student = $scope.myStudents;
+      console.log(student);
+      var totalCredits = 0;
+      for (var aClass in student.courses) {
+        if ($scope.isGradeValid(aClass.grade)) {
+         totalCredits += aClass.course.credits;
+        }
+      }
+      return totalCredits;
+    };
+
   });
 
