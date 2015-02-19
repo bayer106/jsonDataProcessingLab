@@ -4,7 +4,6 @@ angular.module('jsonDataProcessingLabApp')
   .controller('StudentStatusCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
     $scope.statusSort = [];
-
     $scope.classSelected = 0;
 
     $scope.changeClassSelected = function(num){
@@ -13,8 +12,7 @@ angular.module('jsonDataProcessingLabApp')
 
     $scope.returnStudentStatus = function(){
       $scope.sortByStatus();
-      console.log($scope.classSelected);
-      if($scope.classSelected == null){
+      if($scope.classSelected == 0){
         return "Not Selected";
       }else if ($scope.classSelected == 1){
         return "Freshman";
