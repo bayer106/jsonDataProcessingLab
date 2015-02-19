@@ -22,6 +22,139 @@ describe('Controller: CompletedCoursesCtrl', function () {
     });
   }));
 
+  scope.myStudents = [ //trying to add student so our test will run
+    {
+      "firstName": "Love",
+      "lastName": "Roberts",
+      "dateOfBirth": "1989-01-18",
+      "gender": "male",
+      "email": "loveroberts@eweville.com",
+      "phone": "+1 (875) 519-3316",
+      "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
+      "courses": [
+        {
+          "course": {
+            "name": "Models of Computing Systems",
+            "subject": "CSCI",
+            "courseNumber": 3401,
+            "credits": 5
+          },
+          "grade": "A"
+        },
+        {
+          "course": {
+            "name": "Software Design and Development",
+            "subject": "CSCI",
+            "courseNumber": 3601,
+            "credits": 5
+          },
+          "grade": "D"
+        },
+        {
+          "course": {
+            "name": "PreCalculus I: Functions",
+            "subject": "MATH",
+            "courseNumber": 1012,
+            "credits": 5
+          },
+          "grade": "C"
+        },
+        {
+          "course": {
+            "name": "Calculus II",
+            "subject": "MATH",
+            "courseNumber": 1102,
+            "credits": 5
+          },
+          "grade": "IP"
+        },
+        {
+          "course": {
+            "name": "Data Structures",
+            "subject": "CSCI",
+            "courseNumber": 2101,
+            "credits": 5
+          },
+          "grade": "A"
+        },
+        {
+          "course": {
+            "name": "Theory: Quantum Computing",
+            "subject": "CSCI",
+            "courseNumber": 4557,
+            "credits": 4
+          },
+          "grade": "B"
+        },
+        {
+          "course": {
+            "name": "Beginning French I",
+            "subject": "FREN",
+            "courseNumber": 1001,
+            "credits": 4
+          },
+          "grade": "C"
+        },
+        {
+          "course": {
+            "name": "Intermediate French I",
+            "subject": "FREN",
+            "courseNumber": 2001,
+            "credits": 4
+          },
+          "grade": "B"
+        },
+        {
+          "course": {
+            "name": "Intermediate French II",
+            "subject": "FREN",
+            "courseNumber": 2002,
+            "credits": 4
+          },
+          "grade": "B"
+        },
+        {
+          "course": {
+            "name": "Reading and Analysis of Texts",
+            "subject": "FREN",
+            "courseNumber": 3401,
+            "credits": 4
+          },
+          "grade": "C"
+        },
+        {
+          "course": {
+            "name": "Fundamentals of Genetics, Evolution, and Development",
+            "subject": "BIOL",
+            "courseNumber": 1101,
+            "credits": 3
+          },
+          "grade": "B"
+        },
+        {
+          "course": {
+            "name": "Introduction to Film Studies",
+            "subject": "ENGL",
+            "courseNumber": 2015,
+            "credits": 4
+          },
+          "grade": "C"
+        },
+        {
+          "course": {
+            "name": "Beginning Ceramics",
+            "subject": "ARTS",
+            "courseNumber": 1050,
+            "credits": 3
+          },
+          "grade": "B"
+        }
+      ],
+      "major1": "ENGLISH",
+      "major2": null
+    }
+  ]
+
   describe('testing isGradeValid', function() {
       it('should return true for grade A through d', function () {
         $httpBackend.flush();
@@ -45,5 +178,10 @@ describe('Controller: CompletedCoursesCtrl', function () {
     });
   });
 
+  describe ('testing totalCreditsForStudent', function(){
+    it('should have 50 credits', function(){
+      expect(scope.totalCreditsForStudent(scope.myStudents[0]).toBe(50));
+    });
+  });
 });
 
