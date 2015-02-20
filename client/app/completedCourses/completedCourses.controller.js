@@ -27,16 +27,16 @@ angular.module('jsonDataProcessingLabApp')
     };
 
     $scope.totalCreditsForStudent = function (student) {
-      //student = $scope.myStudents;
-      console.log(student);
       var totalCredits = 0;
-      for (var aClass in student.courses) {
-        if ($scope.isGradeValid(aClass.grade)) {
-         totalCredits += aClass.course.credits;
+      for (var i = 0; i < student.courses.length; i++) {
+        var aClass = student.courses[i].course;
+        var aGrade = student.courses[i].grade;
+        if ($scope.isGradeValid(aGrade)) {
+          totalCredits += aClass.credits;
         }
       }
+      console.log(totalCredits);
       return totalCredits;
     };
-
   });
 
