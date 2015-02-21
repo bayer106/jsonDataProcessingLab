@@ -17,12 +17,8 @@
         <li role="presentation" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
             <a role="menuitem" tabindex="-1" ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-        <p class="navbar-brand">  Search by...</p>
+        <p class="navbar-brand">  Search for...</p>
         <li ng-repeat="item in search" ng-class="{active: isActive(item.link)}">
-          <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
-        <p class="navbar-brand">  Display...</p>
-        <li ng-repeat="item in display" ng-class="{active: isActive(item.link)}">
           <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
         <p class="navbar-brand">  List Students By...</p>
