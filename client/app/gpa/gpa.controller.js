@@ -18,11 +18,11 @@ angular.module('jsonDataProcessingLabApp')
         var totalCredits = 0;
         var totalGradePoint = 0;
         for(var j = 0; j< $scope.myStudents[i].courses.length; j++){
-          totalCredits += parseInt($scope.myStudents[i].courses[j].credits);
+          totalCredits += parseInt($scope.myStudents[i].courses[j].course.credits);
           var gradeValue = parseInt($scope.returnGradeValue($scope.myStudents[i].courses[j].grade));
-          totalGradePoint += (gradeValue * parseInt($scope.myStudents[i].courses[j].credits));
+          totalGradePoint += (gradeValue * parseInt($scope.myStudents[i].courses[j].course.credits));
         }
-        var gpa = totalGradePoint/totalCredits;
+        var gpa = (totalGradePoint/totalCredits).toFixed(3);
         $scope.gpaStudents.push({firstName:$scope.myStudents[i].firstName, lastName:$scope.myStudents[i].lastName, gpa:gpa});
       }
     };
