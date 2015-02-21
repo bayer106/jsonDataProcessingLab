@@ -3,14 +3,51 @@
 angular.module('jsonDataProcessingLabApp')
   .controller('AllCoursesCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
+    $scope.searchedStudent = [];
+    $scope.searchField = "";
 
-    $http.get('/api/students').success(function(myStudents) {
+    $scope.fixedSearchField = function(){
+      return $scope.searchField.charAt(0).toUpperCase() + $scope.searchField.slice(1);
+    };
+
+    $http.get('/api/students').success(function (myStudents) {
       $scope.myStudents = myStudents;
       socket.syncUpdates('student', $scope.myStudents);
     });
 
-    $scope.returnName = function(){
-      return $scope.myStudents[0].firstName;
+    $scope.searchForStudent = function(){
+      $scope.searchedStudent = [];
+      for (var i = 0; i < $scope.myStudents.length; i++) {
+        if ($scope.myStudents[i].firstName == $scope.fixedSearchField()){
+          $scope.searchedStudent.push($scope.myStudents[i]);
+        } else if ($scope.myStudents[i].lastName == $scope.fixedSearchField()){
+          $scope.searchedStudent.push($scope.myStudents[i]);
+        }
+      }
+    };
+
+    $scope.sortByStatus = function () {
+      $scope.statusSort = [];
+      for (var i = 0; i < $scope.myStudents.length; i++) {
+        var totalCredits = 0;
+        for (var j = 0; j < $scope.myStudents[i].courses.length; j++) {
+          if ($scope.myStudents[i].courses[j].grade != "F" && $scope.myStudents[i].courses[j].grade != "IP") {
+            totalCredits += $scope.myStudents[i].courses[j].course.credits;
+          }
+        }
+        totalCredits = parseInt(totalCredits);
+        if ($scope.classSelected == 1 && totalCredits < 30) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 2 && totalCredits > 30 && totalCredits < 60) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 3 && totalCredits > 60 && totalCredits < 90) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 4 && totalCredits > 90 && totalCredits < 120) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        } else if ($scope.classSelected == 5 && totalCredits > 120) {
+          $scope.statusSort.push($scope.myStudents[i]);
+        }
+      }
     };
   });
 
