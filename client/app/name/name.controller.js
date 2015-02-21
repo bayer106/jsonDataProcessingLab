@@ -3,15 +3,12 @@
 angular.module('jsonDataProcessingLabApp')
   .controller('NameCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
+    $scope.orderButton = 1;
 
     $http.get('/api/students').success(function(myStudents) {
       $scope.myStudents = myStudents;
       socket.syncUpdates('student', $scope.myStudents);
     });
-
-    $scope.returnName = function(){
-      return $scope.myStudents[0].firstName;
-    };
 
     //source: http://stackoverflow.com/questions/1129216/sorting-objects-in-an-array-by-a-field-value-in-javascript
     // put "-" in front of the property to sort in descending order
@@ -32,6 +29,25 @@ angular.module('jsonDataProcessingLabApp')
           result = 0;
         }
         return result * sortOrder;
+      }
+    }
+    $scope.retrieveSwitch = function(){
+      if($scope.orderButton == 1){
+        return "lastName";
+      }else if ($scope.orderButton == 2){
+        return "firstName";
+      }
+    };
+
+    $scope.changeSwitch = function(num){
+      $scope.orderButton = num;
+    };
+
+    $scope.getOrder = function(){
+      if($scope.orderButton == 1){
+        return "Last Name";
+      }else if($scope.orderButton){
+        return "First Name";
       }
     }
   });

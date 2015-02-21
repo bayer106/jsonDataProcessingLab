@@ -7,7 +7,14 @@
 <div class="container">
   <div ng-include="'components/navbar/navbar.html'"></div>
 </div>
-
+<p style="margin-left:400px">
+  Currently ordering by {{getOrder()}}
+</p>
+<div class="btn-group container" role="group" aria-label="...">
+  <button type="button" class="btn btn-default" style="margin-left:400px" ng-click="changeSwitch(2)">First Name</button>
+  <button type="button" class="btn btn-default" ng-click="changeSwitch(1)">Last Name</button>
+</div>
+<br/>
 <table style="width:50%;margin-left:auto;margin-right:auto" border="3">
   <thead>
   <tr>
@@ -18,7 +25,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="pupil in myStudents.sort(orderBy('lastName'))">
+  <tr ng-repeat="pupil in myStudents.sort(orderBy(retrieveSwitch()))">
     <td>{{pupil.firstName}}</td>
     <td>{{pupil.lastName}}</td>
     <td>{{pupil.major1}}</td>
