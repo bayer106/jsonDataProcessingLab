@@ -460,7 +460,7 @@ Student.find({}).remove(function() {
         "gender": "male",
         "email": "parkshanson@eweville.com",
         "phone": "+1 (824) 450-2947",
-        "address": "183 Boardwalk , Fresno, Georgia, 2402",
+        "address": "183 Boardwalk , Fre  $scope.searchedStudentGrades = [];sno, Georgia, 2402",
         "courses": [
           {
             "course": {

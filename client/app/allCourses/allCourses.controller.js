@@ -4,7 +4,9 @@ angular.module('jsonDataProcessingLabApp')
   .controller('AllCoursesCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
     $scope.searchedStudent = [];
+    $scope.searchedStudentClasses = [];
     $scope.searchField = "";
+    $scope.toReturn = "";
 
     $scope.fixedSearchField = function(){
       return $scope.searchField.charAt(0).toUpperCase() + $scope.searchField.slice(1);
@@ -24,30 +26,27 @@ angular.module('jsonDataProcessingLabApp')
           $scope.searchedStudent.push($scope.myStudents[i]);
         }
       }
+      if ($scope.searchedStudent.length > 1){
+        alert("We found more than one student with that name. Please try searching by last name.");
+      }else if (!$scope.searchedStudent.length > 0) {
+        alert("We couldn't find anyone by that name. Try checking your spelling.");
+      } else {
+        $scope.toReturn = $scope.searchedStudent[0].firstName + " " + $scope.searchedStudent[0].lastName;
+        $scope.loopThroughCourses();
+      }
+      $scope.searchField = "";
     };
 
-    $scope.sortByStatus = function () {
-      $scope.statusSort = [];
-      for (var i = 0; i < $scope.myStudents.length; i++) {
-        var totalCredits = 0;
-        for (var j = 0; j < $scope.myStudents[i].courses.length; j++) {
-          if ($scope.myStudents[i].courses[j].grade != "F" && $scope.myStudents[i].courses[j].grade != "IP") {
-            totalCredits += $scope.myStudents[i].courses[j].course.credits;
-          }
-        }
-        totalCredits = parseInt(totalCredits);
-        if ($scope.classSelected == 1 && totalCredits < 30) {
-          $scope.statusSort.push($scope.myStudents[i]);
-        } else if ($scope.classSelected == 2 && totalCredits > 30 && totalCredits < 60) {
-          $scope.statusSort.push($scope.myStudents[i]);
-        } else if ($scope.classSelected == 3 && totalCredits > 60 && totalCredits < 90) {
-          $scope.statusSort.push($scope.myStudents[i]);
-        } else if ($scope.classSelected == 4 && totalCredits > 90 && totalCredits < 120) {
-          $scope.statusSort.push($scope.myStudents[i]);
-        } else if ($scope.classSelected == 5 && totalCredits > 120) {
-          $scope.statusSort.push($scope.myStudents[i]);
-        }
-      }
+    $scope.returnStudentSearched = function(){
+      return $scope.toReturn;
     };
+
+    $scope.loopThroughCourses = function(){
+      for (var i = 0; i<$scope.searchedStudent[0].courses.length; i++){
+        $scope.searchedStudentClasses.push($scope.searchedStudent[0].courses[i]);
+      }
+      console.log($scope.searchedStudentClasses[0].class);
+      console.log($scope.searchedStudentClasses[0].grade);
+    }
   });
 
