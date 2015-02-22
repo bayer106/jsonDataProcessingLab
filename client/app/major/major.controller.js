@@ -8,7 +8,6 @@ angular.module('jsonDataProcessingLabApp')
       socket.syncUpdates('student', $scope.myStudents);
     });
 
-
     $scope.orderBy = function (property) {
       var sortOrder = 1;
       if(property[0] === "-") {
