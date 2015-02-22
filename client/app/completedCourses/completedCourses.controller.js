@@ -51,7 +51,6 @@ angular.module('jsonDataProcessingLabApp')
           totalCredits += aClass.credits;
         }
       }
-      console.log(totalCredits);
       return totalCredits;
     };
 

@@ -19,7 +19,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="pupil in completedCourses">
+  <tr ng-repeat="pupil in completedCourses.sort(orderBy(completedCredits))">
     <td>{{pupil.firstName}}</td>
     <td>{{pupil.lastName}}</td>
     <td>{{pupil.major1}}</td>

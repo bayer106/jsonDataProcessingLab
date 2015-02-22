@@ -2,12 +2,25 @@
 angular.module('jsonDataProcessingLabApp')
   .controller('MajorCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
+    $scope.majorArray = [];
 
     $http.get('/api/students').success(function(myStudents) {
       $scope.myStudents = myStudents;
       socket.syncUpdates('student', $scope.myStudents);
+      $scope.populateMajorArray();
     });
 
+    $scope.populateMajorArray = function(){
+      for(var i=0; i<$scope.myStudents.length; i++){
+        if($scope.myStudents[i].major1 == null){
+          $scope.majorArray.push({firstName:$scope.myStudents[i].firstName, lastName:$scope.myStudents[i].lastName, major:"No Declared Major"});
+          console.log($scope.majorArray[1].major);
+        } else {
+          $scope.majorArray.push({firstName:$scope.myStudents[i].firstName, lastName:$scope.myStudents[i].lastName, major:$scope.myStudents[i].major1});
+          console.log("this student did have a major :" + $scope.myStudents[i].firstName);
+        }
+      }
+    };
     $scope.orderBy = function (property) {
       var sortOrder = 1;
       if(property[0] === "-") {
@@ -15,18 +28,9 @@ angular.module('jsonDataProcessingLabApp')
         property = property.substr(1);
       }
       return function (a,b) {
-        var isPropertyBNull = b[property] !== null;
-        var isPropertyANull = a[property] !== null;
-        var result = 0;
-        if ((a[property] < b[property]) && isPropertyBNull) {
-          result = -1;
-        } else if ((a[property] > b[property]) && isPropertyANull) {
-          result=1;
-        } else {
-          result = 2;
-        }
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
       }
-    }
+    };
   });
 

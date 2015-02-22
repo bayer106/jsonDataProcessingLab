@@ -17,10 +17,10 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="pupil in myStudents.sort(orderBy('major1'))">
+  <tr ng-repeat="pupil in majorArray.sort(orderBy('major'))">
     <td>{{pupil.firstName}}</td>
     <td>{{pupil.lastName}}</td>
-    <td>{{pupil.major1}}</td>
+    <td>{{pupil.major}}</td>
   </tr>
   </tbody>
 </table>
