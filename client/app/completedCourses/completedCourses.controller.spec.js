@@ -46,7 +46,7 @@ describe('Controller: CompletedCoursesCtrl', function () {
   });
 
   describe ('testing totalCreditsForStudent', function(){
-    it('should have 50 credits', function(){
+    it('should have 10 credits', function(){
       var student1 ={ "courses": [
         {
           "course": {
