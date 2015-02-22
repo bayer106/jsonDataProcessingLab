@@ -10,6 +10,7 @@ angular.module('jsonDataProcessingLabApp')
     $http.get('/api/students').success(function(myStudents) {
       $scope.myStudents = myStudents;
       socket.syncUpdates('student', $scope.myStudents);
+      $scope.completedCredits();
     });
 
     $scope.returnName = function(){
