@@ -9,10 +9,7 @@ angular.module('jsonDataProcessingLabApp')
       socket.syncUpdates('student', $scope.myStudents);
     });
 
-    $scope.returnName = function() {
-      return $scope.myStudents[0].firstName;
-    };
-
+    //putting "-" in front of the property changes the sorting order from ascending to descending
     $scope.orderBy = function (property) {
         var sortOrder = 1;
         if(property[0] === "-") {

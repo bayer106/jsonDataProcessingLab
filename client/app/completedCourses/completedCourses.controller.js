@@ -4,7 +4,7 @@ angular.module('jsonDataProcessingLabApp')
   .controller('CompletedCoursesCtrl', function ($scope, $http, socket) {
     $scope.myStudents = [];
     $scope.completedCourses = [
-      {firstName:"", lastName:"", major1:"", completedCredits: 0}
+      {firstName:"", lastName:"", major1:"", completedCredits: ""}
     ];
 
     $http.get('/api/students').success(function(myStudents) {
@@ -12,10 +12,6 @@ angular.module('jsonDataProcessingLabApp')
       socket.syncUpdates('student', $scope.myStudents);
       $scope.completedCredits();
     });
-
-    $scope.returnName = function(){
-      return $scope.myStudents[0].firstName;
-    };
 
     $scope.isGradeValid = function(grade) {
       grade = grade.toUpperCase();
@@ -30,6 +26,7 @@ angular.module('jsonDataProcessingLabApp')
       }
     };
 
+    //putting "-" in front of the property changes the sorting order from ascending to descending
     $scope.orderBy = function (property) {
       var sortOrder = 1;
       if(property[0] === "-") {

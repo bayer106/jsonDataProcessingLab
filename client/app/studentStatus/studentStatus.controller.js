@@ -56,6 +56,7 @@ angular.module('jsonDataProcessingLabApp')
       }
     };
 
+    //putting "-" in front of the property changes the sorting order from ascending to descending
     $scope.orderBy = function (property) {
       var sortOrder = 1;
       if(property[0] === "-") {

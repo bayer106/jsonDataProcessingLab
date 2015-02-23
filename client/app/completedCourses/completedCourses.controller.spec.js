@@ -76,6 +76,9 @@ describe('Controller: CompletedCoursesCtrl', function () {
           "grade": "F"
         }]};
       expect(scope.totalCreditsForStudent(student1).toEqual(10));
+      /*Using console logs, we were able to figure out that function does indeed return the expected value. However the tests fail
+      or give errors about the student input being undefined.
+       */
     });
   });
 });
